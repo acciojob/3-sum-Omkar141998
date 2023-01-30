@@ -1,9 +1,10 @@
 function threeSum(arr, target) {
-  const result = arr.sort((a, b) => a - b).reduce((acc, curr, i) => {
+  //your code here
+	 const result = arr.sort((a, b) => a - b).reduce((acc, curr, i) => {
     let left = i + 1;
     let right = arr.length - 1;
     while (left < right) {
-      const sum = curr + arr[left] + nums[right];
+      const sum = curr + arr[left] + arr[right];
       if (sum === target) {
         return [curr, arr[left], arr[right]];
       } else if (sum < target) {
@@ -21,4 +22,4 @@ function threeSum(arr, target) {
 }
 }
 
-module.exports = threeSum;
+// module.exports = threeSum;
