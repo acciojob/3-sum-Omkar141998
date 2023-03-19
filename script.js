@@ -1,25 +1,24 @@
-function threeSum(arr, target) {
-  //your code here
-	 const result = arr.sort((a, b) => a - b).reduce((acc, curr, i) => {
-    let left = i + 1;
-    let right = arr.length - 1;
-    while (left < right) {
-      const sum = curr + arr[left] + arr[right];
-      if (sum === target) {
-        return [curr, arr[left], arr[right]];
-      } else if (sum < target) {
-        left++;
-      } else if (sum > target) {
-        right--;
+function threeSum(arr, target) 
+// write your code here
+  
+  arr.sort((a, b) => a - b); // Sort the array in non-decreasing order
+  let closestSum = Infinity;
+  for (let i = 0; i < arr.length - 2; i++) {
+    let j = i + 1;
+    let k = arr.length - 1;
+    while (j < k) {
+      const sum = arr[i] + arr[j] + arr[k];
+      if (Math.abs(sum - target) < Math.abs(closestSum - target)) {
+        closestSum = sum;
       }
-      if (Math.abs(sum - target) < Math.abs(acc - target)) {
-        acc = sum;
+      if (sum < target) {
+        j++;
+      } else {
+        k--;
       }
     }
-    return acc;
-  }, Infinity);
-  return result;
-}
+  }
+  return closestSum;
 }
 
- module.exports = threeSum;
+module.exports = threeSum;
